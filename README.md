@@ -13,35 +13,6 @@ The site showcases:
 - **Usage Examples** - Step-by-step guides to get you started
 - **Custom Module Creation** - How to build your own modules
 
-## Site Features
-
-- 🎨 Modern dark theme with cyan/magenta accent colors
-- 📱 Fully responsive design for mobile and desktop
-- 🚀 Fast, lightweight performance
-- ⚡ Interactive navigation and smooth animations
-
-## Local Development
-
-To view this site locally:
-
-```bash
-# Clone the repository
-git clone https://github.com/p0ckit/p0ckit.github.io.git
-cd p0ckit.github.io
-
-# Open index.html in your browser
-# Or use a local server:
-python3 -m http.server 8000
-```
-
-Then visit `http://localhost:8000` in your browser.
-
-## Files
-
-- `index.html` - Homepage with framework overview
-- `doc.html` - Complete documentation and guides
-- CSS and styling included directly in HTML files
-
 ## Credits
 
 This website was created with assistance from **GitHub Copilot** and designed to provide the best experience for p0ckit users.
