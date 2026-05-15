@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# Path to your local p0ckit modules
-MODULE_DIR="/home/tgrd/p0ckit/modules/core"
+# Path to your local p0ckit root
+P0CKIT_ROOT="/home/tgrd/p0ckit"
+# Path to the runner
+RUNNER="$P0CKIT_ROOT/p0ckit.sh"
 # Output file
 OUTPUT_FILE="/home/tgrd/p0ckit.github.io/modules.html"
 
@@ -35,36 +37,47 @@ echo "<!DOCTYPE html>
 
 echo "<h2>Core Modules</h2>" >> "$OUTPUT_FILE"
 
-# Loop through each file in the module directory
-for module_path in "$MODULE_DIR"/*; do
+# Loop through each module file
+for module_path in "$P0CKIT_ROOT/modules/core"/*; do
     if [[ -f "$module_path" ]]; then
         module_name=$(basename "$module_path")
         
         echo "            <div class='code-block'>" >> "$OUTPUT_FILE"
         echo "                <h3>core/$module_name</h3>" >> "$OUTPUT_FILE"
-        
-        # Extract info
-        info=$(sed -n '/#str_info/,/#end_info/p' "$module_path" | grep -v '#str_info' | grep -v '#end_info' | sed 's/^#//')
-        echo "                <p>$info</p>" >> "$OUTPUT_FILE"
-        
-        # Extract options
-        echo "                <p><strong>Options:</strong></p>" >> "$OUTPUT_FILE"
-        echo "                <ul>" >> "$OUTPUT_FILE"
-        
-        # Parse options more carefully
-        # We extract lines between #str_op and #end_op, strip the '#' and the indentation
+
+        # Attempt 1: Parse via p0ckit metadata (#str_op, #str_info)
+        info=$(sed -n '/#str_info/,/#end_info/p' "$module_path" | grep -v '#str_info' | grep -v '#end_info' | sed 's/^#//' | sed 's/^[[:space:]]*//')
         options=$(sed -n '/#str_op/,/#end_op/p' "$module_path" | grep -v '#str_op' | grep -v '#end_op' | sed 's/^#//' | sed 's/^[[:space:]]*//')
-        
-        while IFS= read -r line; do
-            if [[ -n "$line" ]]; then
-                # Split into option name and description if it's in the format "name (description)"
-                # Or just list the option if it's just a name.
-                # For simplicity, let's just list it.
-                echo "                    <li><code>$line</code></li>" >> "$OUTPUT_FILE"
+
+        # Attempt 2: Fallback for Python/argparse modules
+        if [[ -z "$info" || -z "$options" ]]; then
+            # Improved Python Argparse Scraper
+            # 1. Scrape help text for the module description
+            info=$(grep -E 'help="[^"]+"' "$module_path" | head -n 1 | sed -E 's/.*help="([^"]*)".*/\1/')
+            if [[ -z "$info" ]]; then
+                info="No description available."
             fi
-        done <<< "$options"
+            
+            # 2. Scrape flags and help text for options
+            # We specifically look for a string starting with '-' or '--' followed by the help text
+            options=$(grep "add_argument" "$module_path" | sed -E 's/.*"(-[a-zA-Z0-9-]+|--[a-zA-Z0-9-]+)".*help="([^"]*)".*/\1: \2/')
+        fi
+
+        # Write info
+        echo "                <p>$info</p>" >> "$OUTPUT_FILE"
+
+        # Write options
+        if [[ -n "$options" ]]; then
+            echo "                <p><strong>Options:</strong></p>" >> "$OUTPUT_FILE"
+            echo "                <ul>" >> "$OUTPUT_FILE"
+            while IFS= read -r line; do
+                if [[ -n "$line" ]]; then
+                    echo "                    <li><code>$line</code></li>" >> "$OUTPUT_FILE"
+                fi
+            done <<< "$options"
+            echo "                </ul>" >> "$OUTPUT_FILE"
+        fi
         
-        echo "                </ul>" >> "$OUTPUT_FILE"
         echo "            </div>" >> "$OUTPUT_FILE"
     fi
 done

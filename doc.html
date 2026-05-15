@@ -94,6 +94,13 @@ fw(core/ntscan)# set port 80</code></pre>
 #   Module description here
 #end_info</code></pre>
                     </div>
+
+                    <h3>Execution Model</h3>
+                    <p>Each module must define its execution timing using one of the following:</p>
+                    <div class="code-block">
+                        <pre><code>#t first  # Executes before variables are set
+#t last   # Executes after variables are set</code></pre>
+                    </div>
                 </section>
             </main>
         </div>

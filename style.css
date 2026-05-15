@@ -38,6 +38,17 @@ header, nav, section, footer, aside {
     padding: 1rem;
 }
 
+header {
+    padding-top: 1.5rem;
+}
+
+h1 { 
+    font-size: 2rem; 
+    border-bottom: 2px solid var(--accent); 
+    padding-bottom: 0.5rem; 
+    margin-top: 1rem; 
+}
+
 /* Navigation */
 nav {
     display: flex;
@@ -61,13 +72,6 @@ nav a:hover {
     color: var(--bg);
 }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--highlight);
-    text-transform: uppercase;
-}
-
 /* Typography */
 h1, h2, h3, h4 {
     color: var(--accent);
@@ -75,7 +79,6 @@ h1, h2, h3, h4 {
     margin-bottom: 1rem;
 }
 
-h1 { font-size: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
 h2 { font-size: 1.5rem; }
 h3 { font-size: 1.2rem; }
 
