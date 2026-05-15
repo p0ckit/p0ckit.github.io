@@ -1,0 +1,183 @@
+/* 
+ * p0ckit.github.io - Underground Style
+ * Aesthetic: Brutalist / Terminal / High-Contrast
+ */
+
+:root {
+    --bg: #000000;
+    --text: #d1d1d1;
+    --accent: #00ff41; /* Matrix Green */
+    --dim-text: #666666;
+    --border: #333333;
+    --highlight: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.4;
+    padding: 1rem;
+}
+
+/* Layout */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+header, nav, section, footer, aside {
+    border: 1px solid var(--border);
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+/* Navigation */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--highlight);
+    text-transform: uppercase;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+h1 { font-size: 2rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.2rem; }
+
+p { margin-bottom: 1rem; }
+
+a { color: var(--text); text-decoration: underline; }
+a:hover { color: var(--accent); }
+
+/* Terminal Elements */
+.terminal-header {
+    background: var(--border);
+    color: var(--highlight);
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    margin-bottom: -1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-top: -1rem;
+}
+
+code, pre {
+    font-family: 'Courier New', Courier, monospace;
+    background: #111;
+    color: var(--accent);
+}
+
+pre {
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+}
+
+code {
+    padding: 0.2rem 0.4rem;
+}
+
+.code-block {
+    margin: 1rem 0;
+}
+
+/* Tables / Lists */
+ul, ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li { margin-bottom: 0.3rem; }
+
+/* Buttons / CTAs */
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: var(--accent);
+    color: var(--bg);
+}
+
+/* Sidebar (for Docs) */
+.doc-layout {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1rem;
+}
+
+aside ul {
+    list-style: none;
+    margin-left: 0;
+}
+
+aside ul li {
+    margin-bottom: 0.5rem;
+}
+
+aside ul li a {
+    color: var(--text);
+    font-size: 0.9rem;
+}
+
+aside ul li a:hover {
+    color: var(--accent);
+}
+
+/* Utilities */
+.dim { color: var(--dim-text); }
+.highlight { color: var(--highlight); }
+.status-ok { color: var(--accent); }
+
+/* Mobile */
+@media (max-width: 768px) {
+    .doc-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    nav a {
+        margin: 0.5rem 0;
+    }
+}

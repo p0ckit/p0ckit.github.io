@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p0ckit // modules</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">p0ckit_</div>
+            <div>
+                <a href="index.html">[home]</a>
+                <a href="doc.html">[docs]</a>
+                <a href="modules.html">[modules]</a>
+                <a href="https://github.com/p0ckit/p0ckit" target="_blank">[github]</a>
+            </div>
+        </nav>
+
+        <header>
+            <h1>[module_repository]</h1>
+            <p class="dim">A detailed list of all currently available security modules in the p0ckit core.</p>
+        </header>
+
+        <section>
+            <h2>Core Modules</h2>
+
+            <div class="code-block">
+                <h3>core/ntscan</h3>
+                <p>A Bash-based wrapper for <code>nmap</code>. Performs service version detection on a target host.</p>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>rhost</code> (required): Target IP or hostname</li>
+                    <li><code>port</code> (optional): Target port</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <h3>core/wifi_attack</h3>
+                <p>Comprehensive wrapper for the <code>aircrack-ng</code> suite. Chains reconnaissance, handshake capture, and cracking.</p>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>interface</code> (required): Wireless interface (e.g., wlan0mon)</li>
+                    <li><code>attack_type</code> (required): attack type</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <h3>core/web_fuzzer</h3>
+                <p>Python-based web endpoint fuzzer. Scans for hidden directories and files.</p>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>url</code> (required): Target URL</li>
+                    <li><code>threads</code> (optional): Number of concurrent threads</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <h3>core/sub_enum</h3>
+                <p>Subdomain enumeration tool for identifying subdomains of a target domain.</p>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>domain</code> (required): Target domain</li>
+                    <li><code>threads</code> (optional): Number of concurrent threads</li>
+                </ul>
+            </div>
+
+            <div class="code-block">
+                <h3>core/sok_scan</h3>
+                <p>Lightweight port scanner built in pure Python3. High-speed scanning without external dependencies.</p>
+                <p><strong>Options:</strong></p>
+                <ul>
+                    <li><code>range</code> (required): IP range (e.g., 192.168.1.1-192.168.1.50 or 192.168.1.0/24)</li>
+                </ul>
+            </div>
+        </section>
+
+        <footer>
+            <p class="dim">p0ckit // modules // [end_of_file]</p>
+        </footer>
+    </div>
+</body>
+</html>

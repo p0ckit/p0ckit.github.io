@@ -3,395 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p0ckit - Offensive Security Framework</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00d9ff;
-            --primary-dark: #0099cc;
-            --secondary: #ff006e;
-            --dark-bg: #0a0e27;
-            --darker-bg: #050811;
-            --text-light: #e0e6ff;
-            --text-muted: #8892b0;
-            --border-color: rgba(0, 217, 255, 0.1);
-        }
-
-        body {
-            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-            background: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(10, 14, 39, 0.95);
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--darker-bg), var(--dark-bg));
-            padding: 150px 2rem;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0, 217, 255, 0.1), transparent);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .badge {
-            display: inline-block;
-            background: rgba(0, 217, 255, 0.2);
-            color: var(--primary);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 1rem;
-            border: 1px solid var(--border-color);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 2.5rem;
-        }
-
-        .btn {
-            padding: 12px 32px;
-            border: none;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--darker-bg);
-            font-weight: bold;
-            letter-spacing: 1px;
-            border: 2px solid var(--primary);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.2);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--darker-bg);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 217, 255, 0.2);
-        }
-
-        /* Features Section */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section {
-            padding: 100px 2rem;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--primary);
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, rgba(0, 217, 255, 0.05), rgba(255, 0, 110, 0.05));
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 0 20px rgba(0, 217, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .feature-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            line-height: 1.8;
-        }
-
-        /* Code Section */
-        .code-section {
-            background: var(--darker-bg);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-            margin: 3rem 0;
-        }
-
-        .code-block {
-            background: #0f1419;
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            border-radius: 4px;
-            overflow-x: auto;
-            margin-top: 1.5rem;
-        }
-
-        .code-block code {
-            color: var(--primary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .code-label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--darker-bg);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: var(--secondary);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
-            nav .container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav a {
-                margin-left: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-        }
-    </style>
+    <title>p0ckit // framework</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="/" class="logo">p0ckit</a>
+    <div class="container">
+        <nav>
+            <div class="logo">p0ckit_</div>
             <div>
-                <a href="#features">About</a>
-                <a href="doc.html">Docs</a>
-                <a href="https://github.com/p0ckit/p0ckit" target="_blank">GitHub</a>
+                <a href="index.html">[home]</a>
+                <a href="doc.html">[docs]</a>
+                <a href="modules.html">[modules]</a>
+                <a href="https://github.com/p0ckit/p0ckit" target="_blank">[github]</a>
             </div>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>p0ckit</h1>
-            <p class="subtitle">
-                A modular Bash-based framework for managing and running security modules.<br>
-                Manage your scripts. Run your exploits. Build your toolkit.
-            </p>
-            <div class="badge">Bash • Modular • Open Source</div>
-            <div class="cta-buttons">
-                <a href="https://github.com/p0ckit/p0ckit" class="btn btn-primary" target="_blank">View on GitHub</a>
-                <a href="doc.html" class="btn btn-secondary">Documentation</a>
+        <header>
+            <div class="terminal-header">SYSTEM_INITIALIZATION_COMPLETE</div>
+            <h1>p0ckit framework</h1>
+            <p class="dim">Status: <span class="status-ok">OPERATIONAL</span> | Version: 1.0.0-stable</p>
+            <p>A modular, Bash-driven offensive security toolkit designed for rapid deployment and script management.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="doc.html" class="btn">View Documentation</a>
+                <a href="https://github.com/p0ckit/p0ckit" class="btn" target="_blank">Clone Repo</a>
             </div>
-        </div>
-    </section>
+        </header>
 
-    <!-- Features Section -->
-    <section class="section" id="features">
-        <div class="container">
-            <h2 class="section-title">What is p0ckit?</h2>
-            <div class="features">
-                <div cla🔧 Modular System</h3>
-                    <p>Create and manage your own modules in any language. Add, modify, or remove scripts as needed.</p>
+        <section>
+            <h2>[manifest]</h2>
+            <p>p0ckit provides a lightweight abstraction layer for running security modules with minimal overhead. It is built on Bash for maximum portability across Linux environments.</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                <div>
+                    <h3>01. modularity</h3>
+                    <p class="dim">Load, configure, and execute custom modules in any language. Integrate existing tools into a unified workflow.</p>
                 </div>
-                <div class="feature-card">
-                    <h3>⚡ Bash-Based</h3>
-                    <p>Built on Bash for maximum compatibility and minimal overhead. Run on any Linux system or via Docker.</p>
+                <div>
+                    <h3>02. portability</h3>
+                    <p class="dim">Native Bash execution. Zero dependencies beyond standard Linux utilities. Docker support included.</p>
                 </div>
-                <div class="feature-card">
-                    <h3>📦 Core Modules</h3>
-                    <p>Comes with ready-to-use modules: ntscan, wifi_attack, web_fuzzer, sub_enum, and sok_scan.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🎯 Easy Management</h3>
-                    <p>Simple commands: load modules, set options, and run attacks. Intuitive shell-like interface.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🔐 Open Source</h3>
-                    <p>Full transparency and control. Audit the code, fork it, customize it for your needs.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🖥️ Cross-Platform</h3>
-                    <p>Run natively on Linux or use Docker on Windows. Your choice, your workflow
-                    <p>Designed to integrate with your existing security tools and workflows seamlessly.</p>
+                <div>
+                    <h3>03. automation</h3>
+                    <p class="dim">Standardized interface for reconnaissance, fuzzing, and enumeration scripts.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Quick Start Section -->
-    <section class="code-section">
-        <div class="section container">
-            <h2 class="section-title">Quick Start</h2>
+        <section>
+            <h2>[quick_start]</h2>
             <div class="code-block">
-                <div class="code-label">Installation & Setup</div>
-                <code>$ git clone https://github.com/p0ckit/p0ckit.git<br>$ cd p0ckit<br>$ bash p0ckit.sh</code>
+                <pre><code>$ git clone https://github.com/p0ckit/p0ckit.git
+$ cd p0ckit
+$ bash p0ckit.sh</code></pre>
             </div>
-            <div class="code-block" style="margin-top: 2rem;">
-                <div class="code-label">Using a Module</div>
-                <code>fw()# use core/ntscan<br>fw(core/ntscan)# show options<br>fw(core/ntscan)# set rhost 192.168.1.1<br>fw(core/ntscan)# set port 80<br>fw(core/ntscan)# run</code>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>© 2026 p0ckit. Licensed under MIT.</p>
-            <p style="margin-top: 1rem;">
-                <a href="https://github.com/p0ckit/p0ckit" target="_blank">GitHub</a> • 
-                <a href="doc.html">Documentation</a> • 
-                <a href="https://github.com/p0ckit/p0ckit/issues" target="_blank">Issues</a>
-            </p>
-        </div>
-    </footer>
+        <footer>
+            <p class="dim">© 2026 p0ckit // MIT License // [unauthorized_access_prohibited]</p>
+        </footer>
+    </div>
 </body>
 </html>

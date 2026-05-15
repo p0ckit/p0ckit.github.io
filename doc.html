@@ -3,472 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p0ckit - Documentation</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #00d9ff;
-            --primary-dark: #0099cc;
-            --secondary: #ff006e;
-            --dark-bg: #0a0e27;
-            --darker-bg: #050811;
-            --text-light: #e0e6ff;
-            --text-muted: #8892b0;
-            --border-color: rgba(0, 217, 255, 0.1);
-        }
-
-        body {
-            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
-            background: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            background: rgba(10, 14, 39, 0.95);
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-
-        nav .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-        }
-
-        nav a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary);
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .doc-wrapper {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 3rem;
-            padding: 3rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-        }
-
-        .sidebar h3 {
-            color: var(--primary);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        .sidebar ul li a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-            display: block;
-            padding: 0.5rem;
-            border-left: 2px solid transparent;
-            padding-left: 1rem;
-        }
-
-        .sidebar ul li a:hover,
-        .sidebar ul li a.active {
-            color: var(--primary);
-            border-left-color: var(--primary);
-        }
-
-        /* Content */
-        .doc-content h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1rem;
-        }
-
-        .doc-content h3 {
-            color: var(--text-light);
-            font-size: 1.3rem;
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .doc-content p {
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .doc-content code {
-            background: #0f1419;
-            border: 1px solid var(--border-color);
-            padding: 2px 6px;
-            border-radius: 3px;
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .code-block {
-            background: #0f1419;
-            border: 1px solid var(--border-color);
-            padding: 1.5rem;
-            border-radius: 4px;
-            overflow-x: auto;
-            margin: 1.5rem 0;
-        }
-
-        .code-block code {
-            background: none;
-            border: none;
-            padding: 0;
-            color: var(--primary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .code-label {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        ul, ol {
-            margin-left: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        ul li, ol li {
-            margin-bottom: 0.5rem;
-            color: var(--text-muted);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--darker-bg);
-            border-top: 1px solid var(--border-color);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-            margin-top: 3rem;
-        }
-
-        footer a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            .doc-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .sidebar {
-                position: static;
-            }
-        }
-    </style>
+    <title>p0ckit // documentation</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="/" class="logo">p0ckit</a>
+    <div class="container">
+        <nav>
+            <div class="logo">p0ckit_</div>
             <div>
-                <a href="index.html">Home</a>
-                <a href="index.html#features">About</a>
-                <a href="https://github.com/p0ckit/p0ckit" target="_blank">GitHub</a>
+                <a href="index.html">[home]</a>
+                <a href="doc.html">[docs]</a>
+                <a href="modules.html">[modules]</a>
+                <a href="https://github.com/p0ckit/p0ckit" target="_blank">[github]</a>
             </div>
+        </nav>
+
+        <div class="doc-layout">
+            <aside>
+                <h3>[guide]</h3>
+                <ul>
+                    <li><a href="#getting-started">Getting Started</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#usage">Basic Usage</a></li>
+                    <li><a href="#modules">Module Reference</a></li>
+                    <li><a href="#custom">Custom Modules</a></li>
+                </ul>
+            </aside>
+
+            <main>
+                <section id="getting-started">
+                    <h2>Getting Started</h2>
+                    <p>p0ckit is a Bash-based framework designed to manage security modules. It allows you to standardize your toolkit and run complex scripts through a unified interface.</p>
+                    <p class="dim">⚠️ WARNING: For educational and authorized testing purposes only.</p>
+                </section>
+
+                <section id="installation">
+                    <h2>Installation</h2>
+                    <h3>Linux/Unix</h3>
+                    <div class="code-block">
+                        <pre><code>$ git clone https://github.com/p0ckit/p0ckit.git
+$ cd p0ckit
+$ bash p0ckit.sh</code></pre>
+                    </div>
+
+                    <h3>Docker (Windows/macOS)</h3>
+                    <p>If you are on a non-Linux system, use the provided Docker container:</p>
+                    <div class="code-block">
+                        <pre><code>$ docker build -t p0ckit .
+$ docker run -i -t p0ckit</code></pre>
+                    </div>
+                </section>
+
+                <section id="usage">
+                    <h2>Basic Usage</h2>
+                    <p>Launch the framework by running <code>p0ckit.sh</code>. You will be greeted by the <code>fw()</code> prompt.</p>
+                    
+                    <h3>1. Loading a Module</h3>
+                    <div class="code-block">
+                        <pre><code>fw()# use core/ntscan
+fw(core/ntscan)#</code></pre>
+                    </div>
+
+                    <h3>2. Configuring Options</h3>
+                    <div class="code-block">
+                        <pre><code>fw(core/ntscan)# set rhost 192.168.1.1
+fw(core/ntscan)# set port 80</code></pre>
+                    </div>
+
+                    <h3>3. Execution</h3>
+                    <div class="code-block">
+                        <pre><code>fw(core/ntscan)# run</code></pre>
+                    </div>
+                </section>
+
+                <section id="modules">
+                    <h2>Module Reference</h2>
+                    <p>Detailed descriptions of all built-in modules can be found in the <a href="modules.html">[modules]</a> section.</p>
+                </section>
+
+                <section id="custom">
+                    <h2>Custom Modules</h2>
+                    <p>You can add your own modules to the framework. Each module must follow the p0ckit metadata format for options and info.</p>
+                    <div class="code-block">
+                        <pre><code>#str_op
+#   option1
+#   option2
+#end_op
+
+#str_info
+#   Module description here
+#end_info</code></pre>
+                    </div>
+                </section>
+            </main>
         </div>
-    </nav>
 
-    <!-- Documentation Wrapper -->
-    <div class="doc-wrapper">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-            <h3>Guide</h3>
-            <ul>
-                <li><a href="#getting-started" class="active">Getting Started</a></li>
-                <li><a href="#installation">Installation</a></li>
-                <li><a href="#usage">Basic Usage</a></li>
-                <li><a href="#examples">Available Modules</a></li>
-                <li><a href="#api">Custom Modules</a></li>
-                <li><a href="#contributing">Updating & Contributing</a></li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="doc-content">
-            <section id="getting-started">
-                <h2>Getting Started</h2>
-                <p>
-                    p0ckit is a Bash-based framework that helps you manage and run security modules/scripts. 
-                    It comes with some core modules but you're free to add and modify as you want. 
-                    This guide will walk you through installation and basic usage.
-                </p>
-                <p style="color: #ffaa44; margin-top: 1.5rem;">
-                    <strong>⚠️ Note:</strong> If you're serious about cybersecurity on Windows, consider using a Linux VM or Docker. 
-                    For the best experience, run p0ckit natively on Linux.
-                </p>
-            </section>
-
-            <section id="installation">
-                <h2>Installation</h2>
-                <h3>Prerequisites</h3>
-                <ul>
-                    <li>Git installed (for cloning the repository)</li>
-                    <li>Bash shell</li>
-                    <li>Linux/Unix environment (or Docker on Windows)</li>
-                </ul>
-
-                <h3>Linux Installation</h3>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>$ git clone https://github.com/p0ckit/p0ckit.git<br>$ cd p0ckit<br>$ bash p0ckit.sh</code>
-                </div>
-
-                <h3>Windows (Docker)</h3>
-                <p>Install <a href="https://www.docker.com/products/docker-desktop/" style="color: var(--primary);">Docker Desktop</a>, then:</p>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>$ docker build -t p0ckit .<br>$ docker run -i -t p0ckit</code>
-                </div>
-                <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;">
-                    The Docker image includes Debian with: bash, git, python3, nmap, npm, curl, and jq.
-                </p>
-
-                <h3>Windows Alternative</h3>
-                <p>If you have a .zip file or didn't use git clone, you can extract and run directly. However, you won't have the .git folder, which means you won't be able to use the built-in update commands.</p>
-            </section>
-
-            <section id="usage">
-                <h2>Basic Usage</h2>
-                <p>Once p0ckit is running, you'll see the framework prompt:</p>
-
-                <h3>1. View Help</h3>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>fw()# help<br>fw()# help a/-a  # Advanced help menu</code>
-                </div>
-
-                <h3>2. Load a Module</h3>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>fw()# use core/ntscan<br>fw(core/ntscan)#</code>
-                </div>
-
-                <h3>3. View Module Info & Options</h3>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>fw(core/ntscan)# show info<br>#str_info<br>#   This is a script that runs nmap -sV with the given ip and port<br>#end_info<br><br>fw(core/ntscan)# show options<br>#str_op<br>#   rhost   (required)<br>#   port    (optional)<br>#end_op</code>
-                </div>
-
-                <h3>4. Set Options</h3>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>fw(core/ntscan)# set rhost 192.168.1.1<br>Set: rhost => 192.168.1.1<br>fw(core/ntscan)# set port 80<br>Set: port => 80</code>
-                </div>
-
-                <h3>5. Run the Module</h3>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>fw(core/ntscan)# run<br>Starting Nmap 7.98 ( https://nmap.org ) at 2026-04-04 22:02<br>Nmap scan report for 192.168.1.1<br>Host is up (0.0012s latency).<br><br>PORT   STATE  SERVICE<br>80/tcp open   http<br>...</code>
-                </div>
-            </section>
-
-            <section id="examples">
-                <h2>Common Examples</h2>
-                <h3>Available Modules</h2>
-                
-                <h3>Core Modules</h3>
-                
-                <h4>ntscan</h4>
-                <p>A Bash wrapper for nmap. Takes an IP/hostname and optionally a port, then runs <code>nmap -sV</code>.</p>
-                <p><strong>Options:</strong> rhost (required), port (optional)</p>
-
-                <h4>wifi_attack</h4>
-                <p>A comprehensive wrapper for the aircrack-ng suite. Chains reconnaissance, handshake capture, and cracking in one module.</p>
-                <p><strong>Options:</strong> interface (required), attack_type (required), plus specific arguments based on attack type</p>
-
-                <h4>web_fuzzer</h4>
-                <p>A Python-based web fuzzer for scanning URLs and endpoints. Supports:</p>
-                <ul style="margin-left: 1rem;">
-                    <li>Single or multiple URL scanning</li>
-                    <li>Endpoint fuzzing</li>
-                    <li>Status code filtering</li>
-                    <li>Configurable worker threads</li>
-                </ul>
-
-                <h4>sub_enum</h4>
-                <p>Subdomain enumeration tool written in Python. Similar to web_fuzzer but for discovering subdomains.</p>
-                <ul style="margin-left: 1rem;">
-                    <li>Single or multiple domain scanning</li>
-                    <li>Output filtering</li>
-                    <li>Configurable worker threads</li>
-                </ul>
-
-                <h4>sok_scan</h4>
-                <p>Port scanner built in Python3 using only built-in modules (no external dependencies needed).</p>
-                <ul style="margin-left: 1rem;">
-                    <li>CIDR range support (e.g., 192.168.1.0/24)</li>
-                    <li>Normal range support (e.g., 192.168.1.1-192.168.1.123)</li>
-                    <li>Individual IP scanning</li>
-                </ul>
-            </section>
-
-            <section id="api">
-                <h2>Creating Custom Modules</h2>
-                <p>You can create your own modules in any language! Each module needs three key components:</p>
-
-                <h3>1. Options Definition</h3>
-                <div class="code-block">
-                    <div class="code-label">Format</div>
-                    <code>#str_op<br>#   option1<br>#   option2<br>#   etc<br>#end_op</code>
-                </div>
-
-                <h3>2. Module Description</h3>
-                <div class="code-block">
-                    <div class="code-label">Format</div>
-                    <code>#str_info<br>#   Description line 1<br>#   Description line 2<br>#   etc<br>#end_info</code>
-                </div>
-
-                <h3>3. Execution Model</h3>
-                <p>Choose one based on your language's requirements:</p>
-                <div class="code-block">
-                    <div class="code-label">For languages that run first, then receive variables</div>
-                    <code>#t first</code>
-                </div>
-                <div class="code-block">
-                    <div class="code-label">For languages that need variables set before execution</div>
-                    <code>#t last</code>
-                </div>
-
-                <h3>Example Module</h3>
-                <p>You can write modules in Bash, Python, Go, or any language you prefer. Place them in the modules directory and use them with <code>use module-name</code>.</p>
-            </section>
-
-            <section id="contributing">
-                <h2>Updating & Maintenance</h2>
-                
-                <h3>Linux Update</h3>
-                <p>Update p0ckit using the built-in command:</p>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>fw()# update</code>
-                </div>
-                <p style="margin-top: 1rem;">Or manually with git:</p>
-                <div class="code-block">
-                    <div class="code-label">bash</div>
-                    <code>$ git pull origin main</code>
-                </div>
-
-                <h3>Windows (Docker) Update</h3>
-                <p>Run the update.bat file (which will ask if you want to rebuild the Docker container).</p>
-                <p style="color: var(--text-muted); margin-top: 1rem;">
-                    <strong>Note:</strong> Don't use update/fix commands inside Docker since changes aren't persistent.
-                </p>
-
-                <h3>Contributing Modules</h3>
-                <p>
-                    p0ckit welcomes community contributions! You can:
-                </p>
-                <ul>
-                    <li>Create new modules in any language</li>
-                    <li>Improve existing modules</li>
-                    <li>Report bugs and issues</li>
-                    <li>Submit pull requests on <a href="https://github.com/p0ckit/p0ckit" style="color: var(--primary);">GitHub</a></li>
-                </ul>
-
-                <h3>Disclaimer</h3>
-                <p style="color: #ffaa44; margin-top: 1.5rem;">
-                    <strong>⚠️ Legal Notice:</strong> This tool is made for educational and ethical hacking purposes only. 
-                    The creators are not liable for misuse by end users. Always ensure you have permission before conducting 
-                    security assessments on any system
-                <p>
-                    For detailed API documentation, see the 
-                    <a href="https://github.com/p0ckit/p0ckit" style="color: var(--primary);">GitHub repository</a>.
-                </p>
-            </section>
-
-            <section id="contributing">
-                <h2>Contributing</h2>
-                <p>
-                    p0ckit is open source and welcomes contributions from the security community!
-                </p>
-                <h3>How to Contribute</h3>
-                <ul>
-                    <li>Fork the repository on GitHub</li>
-                    <li>Create a feature branch for your changes</li>
-                    <li>Make your improvements</li>
-                    <li>Submit a pull request with a clear description</li>
-                </ul>
-                <p>
-                    All contributions are welcome. Check the 
-                    <a href="https://github.com/p0ckit/p0ckit" style="color: var(--primary);">GitHub repository</a> 
-                    for current issues and feature requests.
-                </p>
-            </section>
-        </main>
+        <footer>
+            <p class="dim">p0ckit // documentation // [end_of_file]</p>
+        </footer>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <p>© 2026 p0ckit. Licensed under MIT.</p>
-        <p style="margin-top: 1rem;">
-            <a href="https://github.com/p0ckit/p0ckit" target="_blank">GitHub</a> • 
-            <a href="index.html">Home</a> • 
-            <a href="https://github.com/p0ckit/p0ckit/issues" target="_blank">Issues</a>
-        </p>
-    </footer>
 </body>
+</html>
