@@ -15,7 +15,10 @@ The site showcases:
 
 ## Credits
 
-This website was created with assistance from **GitHub Copilot** and designed to provide the best experience for p0ckit users.
+This website was created with **GitHub Copilot** and **openclaw**.  
+I will only take credit for the ideas.  
+
+ps: No I will not spend time relearning html and css for this.  
 
 ## License
 
