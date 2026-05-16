@@ -173,6 +173,13 @@ aside ul li a:hover {
 .highlight { color: var(--highlight); }
 .status-ok { color: var(--accent); }
 
+.manifest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
 /* Mobile */
 @media (max-width: 768px) {
     .doc-layout {
@@ -182,6 +189,12 @@ aside ul li a:hover {
     nav {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    nav div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
     
     nav a {
