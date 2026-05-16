@@ -18,8 +18,10 @@
             </div>
         </nav>
 
+        <button id="menu-toggle" class="mobile-only">[guide]</button>
+
         <div class="doc-layout">
-            <aside>
+            <aside id="sidebar">
                 <h3>[guide]</h3>
                 <ul>
                     <li><a href="#getting-started">Getting Started</a></li>
@@ -109,5 +111,24 @@ fw(core/ntscan)# set port 80</code></pre>
             <p class="dim">p0ckit // documentation // [end_of_file]</p>
         </footer>
     </div>
+
+    <script>
+        const toggle = document.getElementById('menu-toggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when a link is clicked (on mobile)
+        const links = sidebar.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
